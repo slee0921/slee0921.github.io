@@ -1,0 +1,647 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ECON1220 Blank Notes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Layout: chapter rail on the left + work sheet with 4 step tabs on the right. On phones the rail becomes a horizontal chip row. The sheet is ruled notebook paper. */
+:root{
+  --bg:#eef1f5; --sheet:#ffffff; --ink:#1b2230; --muted:#5a6477; --line:#dce1ea; --rule:#e7ebf2;
+  --accent:#1f3a68; --red:#c8312b; --redbg:#fdecea; --blue:#2457c5; --bluebg:#e9effc; --gold:#a8690f; --ok:#2c7a4b; --okbg:#e6f4ec;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-pen:"Caveat","Comic Sans MS",cursive;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11141a; --sheet:#191e27; --ink:#e5e9f0; --muted:#9aa4b5; --line:#2b3341; --rule:#232a36;
+  --accent:#9db6e8; --red:#ff6f66; --redbg:#3a1f1f; --blue:#7fa6ff; --bluebg:#1d2740; --gold:#e5ac55; --ok:#62c98d; --okbg:#173126; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11141a; --sheet:#191e27; --ink:#e5e9f0; --muted:#9aa4b5; --line:#2b3341; --rule:#232a36;
+  --accent:#9db6e8; --red:#ff6f66; --redbg:#3a1f1f; --blue:#7fa6ff; --bluebg:#1d2740; --gold:#e5ac55; --ok:#62c98d; --okbg:#173126; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+header.top h1{font-size:22px;margin:0;font-weight:700;letter-spacing:-.01em}
+header.top h1 span{color:var(--muted);font-weight:500;font-size:14px;margin-left:8px}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.legend b{font-family:var(--f-pen);font-size:21px;font-weight:600}
+.grid{display:grid;grid-template-columns:240px 1fr;gap:20px;align-items:start}
+nav.rail{display:flex;flex-direction:column;gap:6px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+.chbtn{all:unset;cursor:pointer;display:grid;grid-template-columns:42px 1fr;gap:2px 10px;padding:10px 12px;border-radius:8px;border:1px solid transparent}
+.chbtn:hover{background:var(--sheet)}
+.chbtn:focus-visible{outline:2px solid var(--blue)}
+.chbtn[aria-current="true"]{background:var(--sheet);border-color:var(--line)}
+.chbtn .no{grid-row:span 2;font-family:var(--f-mono);font-size:13px;color:var(--accent);font-weight:500;padding-top:2px}
+.chbtn .nm{font-size:13.5px;font-weight:600;line-height:1.35}
+.chbtn .st{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.st .due{color:var(--red);font-weight:600}
+main{min-width:0}
+.chhead h2{margin:0 0 2px;font-size:24px;text-wrap:balance;letter-spacing:-.01em}
+.chhead p{margin:0 0 14px;color:var(--muted);font-size:13.5px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
+.step{all:unset;cursor:pointer;padding:10px 12px;border-radius:8px;border:1px solid var(--line);display:flex;flex-direction:column;gap:1px}
+.step:focus-visible{outline:2px solid var(--blue)}
+.step small{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.step span{font-weight:600;font-size:14px}
+.step[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--sheet)}
+.step[aria-selected="true"] small{color:var(--sheet);opacity:.8}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.btn{all:unset;cursor:pointer;font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:7px;border:1px solid var(--line);background:var(--sheet);color:var(--ink)}
+.btn:hover{border-color:var(--muted)}
+.btn:focus-visible{outline:2px solid var(--blue)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--sheet)}
+.btn.red{color:var(--red);border-color:var(--red)}
+.hint{color:var(--muted);font-size:13px}
+.spacer{flex:1}
+.sec{margin-bottom:22px}
+.sec h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;font-family:var(--f-mono);font-weight:500;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.item{display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:4px 16px;padding:7px 0;border-bottom:1px dashed var(--rule)}
+.item:last-child{border-bottom:0}
+.item .t{font-weight:600}
+.item .d{min-width:0}
+.item.weak .t{color:var(--red)}
+.item.weak .t::after{content:" ●";font-size:10px;vertical-align:middle}
+.f{font-family:var(--f-mono);font-size:13px;background:var(--rule);padding:1px 5px;border-radius:4px}
+.blur .d{filter:blur(5px);cursor:pointer;transition:filter .15s}
+.blur .d.show{filter:none}
+.paper{width:100%;min-height:520px;resize:vertical;border:1px solid var(--line);border-radius:8px;padding:6px 16px 6px 54px;
+  font:16px/32px var(--f-body);color:var(--ink);background-color:var(--sheet);
+  background-image:linear-gradient(90deg,transparent 40px,var(--redbg) 40px,var(--redbg) 42px,transparent 42px),repeating-linear-gradient(var(--sheet) 0 31px,var(--rule) 31px 32px);
+  background-attachment:local;outline:none}
+.paper:focus{border-color:var(--accent)}
+.timer{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:15px;padding:6px 10px;border:1px solid var(--line);border-radius:7px}
+.skel{margin-top:10px;padding:10px 14px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:13.5px}
+.cmp{display:grid;grid-template-columns:1fr 1.25fr;gap:18px}
+.cmp>div{min-width:0}
+.mine{white-space:pre-wrap;font:15px/30px var(--f-body);border:1px solid var(--line);border-radius:8px;padding:6px 14px;min-height:200px;max-height:640px;overflow:auto;
+  background-image:repeating-linear-gradient(var(--sheet) 0 29px,var(--rule) 29px 30px);background-attachment:local}
+.colh{font-size:12px;font-family:var(--f-mono);letter-spacing:.06em;color:var(--muted);margin:0 0 8px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;text-transform:uppercase}
+.chk{max-height:640px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:4px 12px}
+.ci{display:grid;grid-template-columns:1fr auto;gap:6px 10px;padding:8px 4px;border-bottom:1px dashed var(--rule)}
+.ci:last-child{border-bottom:0}
+.ci .t{font-weight:600;font-size:14px}
+.ci .d{font-size:13px;color:var(--muted);grid-column:1}
+.ci .mk{grid-row:1 / span 2;grid-column:2;display:flex;gap:4px;align-items:start}
+.mk button{all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:6px;border:1px solid var(--line);font-size:15px;color:var(--muted)}
+.mk button:focus-visible{outline:2px solid var(--blue)}
+.ci.ok{background:var(--okbg)} .ci.ok .mk .o{background:var(--ok);border-color:var(--ok);color:var(--sheet)}
+.ci.miss{background:var(--redbg)} .ci.miss .t{color:var(--red)} .ci.miss .mk .x{background:var(--red);border-color:var(--red);color:var(--sheet)}
+.ci.miss .d{color:var(--ink)}
+.chsec{font-family:var(--f-mono);font-size:11px;color:var(--accent);letter-spacing:.06em;padding:12px 4px 2px;text-transform:uppercase}
+.pens{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.pen{width:100%;min-height:150px;resize:vertical;border-radius:8px;padding:8px 12px;font:600 23px/1.3 var(--f-pen);outline:none}
+.pen.r{color:var(--red);border:1px solid var(--red);background:var(--redbg)}
+.pen.b{color:var(--blue);border:1px solid var(--blue);background:var(--bluebg)}
+.pen::placeholder{opacity:.55}
+.score{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:13px}
+.bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--ok)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.stat small{display:block;color:var(--muted);font-size:12px}
+.stat b{font-size:22px;font-variant-numeric:tabular-nums}
+.stat b.red{color:var(--red)}
+table.hist{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+table.hist th,table.hist td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule)}
+table.hist th{color:var(--muted);font-weight:500;font-size:12px}
+.tw{overflow-x:auto}
+.weakli{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:10px 12px;border-left:3px solid var(--red);background:var(--redbg);border-radius:0 6px 6px 0;margin-bottom:8px}
+.weakli .t{font-weight:600;color:var(--red)}
+.weakli .d{grid-column:1;font-size:13.5px}
+.weakli .d.hide{filter:blur(5px);cursor:pointer}
+.weakli .btn{grid-row:1 / span 2;grid-column:2;align-self:center}
+.pnote{font:600 22px/1.3 var(--f-pen);white-space:pre-wrap;padding:10px 14px;border-radius:8px;margin-bottom:10px}
+.pnote.r{color:var(--red);background:var(--redbg)} .pnote.b{color:var(--blue);background:var(--bluebg)}
+h4{margin:20px 0 8px;font-size:15px}
+.empty{color:var(--muted);font-size:14px;padding:14px;border:1px dashed var(--line);border-radius:8px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--sheet);padding:9px 16px;border-radius:8px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+.fig{margin-top:8px;max-width:460px}
+.chk .fig,.weakli .fig{max-width:340px}
+.fig svg{display:block;width:100%;height:auto;overflow:visible}
+.fig text{font:10.5px var(--f-body);fill:var(--muted)}
+.fig .tl{fill:var(--ink);font-weight:600}
+.fig .tb{fill:var(--blue);font-weight:600}
+.fig .tr{fill:var(--red);font-weight:600}
+.fig .tg{fill:var(--gold);font-weight:600}
+.fig .ax{stroke:var(--ink);stroke-width:1.2;fill:none}
+.fig .g{stroke:var(--muted);stroke-width:.8;stroke-dasharray:3 3;fill:none}
+.fig .d1{stroke:var(--blue);stroke-width:2.4;fill:none;stroke-linecap:round}
+.fig .s1{stroke:var(--red);stroke-width:2.4;fill:none;stroke-linecap:round}
+.fig .lr{stroke:var(--gold);stroke-width:2.4;fill:none}
+.fig .fade{stroke-opacity:.38}
+.fig .st{stroke:var(--red);stroke-width:1.6;fill:none}
+.fig .dt{fill:var(--ink)}
+.fig .arl{stroke:var(--ink);stroke-width:1.4}
+.fig .arh{fill:var(--ink)}
+.fig .rec{fill:var(--redbg)}
+.fig .bx{fill:var(--sheet);stroke:var(--line);stroke-width:1.2}
+.fig .bx2{fill:var(--bluebg);stroke:var(--blue);stroke-width:1.2}
+.fig .bfill{fill:var(--accent)}
+.fig .neg{fill:var(--red)}
+.fig .cn{stroke:var(--muted);stroke-width:1.2;fill:none}
+.fig.wide,.chk .fig.wide,.weakli .fig.wide{max-width:none}
+table.sum{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;line-height:1.45}
+table.sum th{background:var(--accent);color:var(--sheet);text-align:left;font-weight:600;padding:7px 10px;font-size:12px}
+table.sum td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.sum td.gcell{width:150px;padding:4px 8px}
+.fig svg.mini{width:140px;height:auto}
+.fig .mini text{font-size:9.5px}
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr}
+  nav.rail{position:static;flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px}
+  .chbtn{grid-template-columns:auto;min-width:160px}
+  .chbtn .no{grid-row:auto}
+  .cmp,.pens{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .item{grid-template-columns:1fr}
+  .sheet{padding:16px 14px}
+  .stats{grid-template-columns:1fr 1fr}
+  .paper{padding-left:48px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>ECON1220 Blank Notes<span>Lectures 8 – 13</span></h1>
+    <div class="legend"><span><b style="color:var(--red)">Red pen</b> missing or wrong</span><span><b style="color:var(--blue)">Blue pen</b> tips from practice problems</span></div>
+  </header>
+  <div class="grid">
+    <nav class="rail" id="rail" aria-label="Chapters"></nav>
+    <main>
+      <div class="chhead"><h2 id="chTitle"></h2><p id="chSub"></p></div>
+      <div class="steps" role="tablist" id="steps"></div>
+      <section class="sheet" id="pane"></section>
+    </main>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const CH=[
+{id:"L8",name:"GDP: Measuring Total Production and Income",short:"GDP: Measuring Production & Income",secs:[
+ ["Macroeconomics",[
+  ["Macroeconomics","The study of the economy as a whole: inflation, unemployment, economic growth"],
+  ["Business cycle","Alternating periods of expansion and recession. Expansion: total production and employment increasing. Recession: decreasing"],
+  ["Economic growth","The ability of an economy to produce increasing quantities of goods and services"],
+  ["Inflation rate","The % increase in the average level of prices from one year to the next"]]],
+ ["GDP & the circular flow",[
+  ["GDP","The <b>market value</b> of all <b>final</b> goods and services produced in a country during a <b>period of time</b> (typically one year). Measured in market values, not quantities; only current production"],
+  ["Final vs intermediate good","Final good: purchased by a final user. Intermediate good: an input into another good (a tire on a truck). Only final goods are counted, to avoid double counting"],
+  ["Ex 8.1","All cheese is used in pizzas, so cheese is excluded: GDP = 5,000 + 800 + 2,000 = <b>$7,800</b>"],
+  ["Circular flow","Measuring total production (GDP) also measures total income. GDP = total expenditure = total income"],
+  ["Factors of production & income","Labor → wages, capital → interest, natural resources → rent, profit = income that remains. Wages + interest + rent + profit = total income"],
+  ["Transfer payments","Social Security, unemployment insurance. Not in GDP: not received in exchange for production of a new good or service"],
+  ["Four uses of household income","Buy domestic goods, buy imports, pay taxes, save (banks, stocks, bonds = the financial system)"]]],
+ ["Components of GDP",[
+  ["Consumption (C)","Services, nondurable goods, durable goods. Household spending on <b>new houses is NOT in C</b> (it is in I)"],
+  ["Investment (I)","Business fixed investment (factories, machinery), residential investment (new houses), changes in business inventories"],
+  ["Government purchases (G)","Federal, state, local spending on goods and services. Transfer payments excluded"],
+  ["Net exports (NX)","Exports − imports. Imports are subtracted because they are not U.S. production"],
+  ["GDP equation","<span class='f'>Y = C + I + G + NX</span>"],
+  ["2022 shares","C 68.0%, I 18.5%, G 17.3%, NX −3.8% (total $25,744B)"],
+  ["Value-added method","Value added = selling price − price paid for intermediate goods. Cotton 1 + textile 2 + shirt 12 + L.L.Bean 20 = $35 = final price"]]],
+ ["Shortcomings of GDP",[
+  ["Household production","Goods/services people produce for themselves (childcare, cleaning, meals) are not counted. Distorts long-run comparisons as women entered the workforce after the 1970s"],
+  ["Underground economy","Hidden to avoid taxes/regulation or because illegal. At most 10% of U.S. GDP; over 50% in some countries (Peru). Not serious for short-run changes"],
+  ["GDP vs well-being","Leisure not included (60-hr weeks in 1890 vs < 40 today), not adjusted for pollution, crime and social problems, or distribution of income"],
+  ["GDP per capita","GDP ÷ population"]]],
+ ["Real vs nominal GDP",[
+  ["Nominal GDP","Value of final goods and services at current-year prices"],
+  ["Real GDP","Value at base-year prices. Changes reflect only changes in quantity"],
+  ["Ex 8.3","2025 quantities × 2017 prices: 4,000 + 880 + 1,800 = <b>$6,680</b>"],
+  ["Chain-weighted prices","BEA since 1996: averages prices of adjacent years, so relative-price distortion is minimized. Reported in ‘chained (2017) dollars’"],
+  ["Real vs nominal over time","Before the 2017 base year nominal < real; after it nominal > real"],
+  ["GDP deflator","<span class='f'>Nominal GDP / Real GDP × 100</span>. 2021 = 110.2, 2022 = 118.0 → price level up 7.1%"]]],
+ ["Other measures",[
+  ["GNP","Final goods and services produced by U.S. residents, even outside the U.S."],
+  ["Depreciation","Value of worn-out machinery, equipment, and buildings"],
+  ["National income","GDP − depreciation − (difference between GDP and GNP)"],
+  ["Personal income","Income received by households: subtract retained earnings, add transfer payments and interest on government bonds"],
+  ["Disposable personal income","Personal income − personal taxes. Best measure of income households can actually spend"],
+  ["Gross domestic income","GDP as the sum of income payments. 2022: wages 52%, taxes/depreciation 24%, corporate profit 11%, sole proprietors 7%, interest 3%, rent 3%"]]]
+]},
+{id:"L9",name:"Unemployment and Inflation",short:"Unemployment & Inflation",secs:[
+ ["Labor market definitions",[
+  ["Household survey (CPS)","Monthly Census Bureau survey; BLS uses it to compute the unemployment rate"],
+  ["Employed","Worked during the week before the survey, or temporarily away (ill, vacation, strike)"],
+  ["Unemployed","Did not work last week, available for work, and actively looked for work in the <b>previous four weeks</b>"],
+  ["Labor force","Employed + unemployed"],
+  ["Not in the labor force","Retirees, homemakers, full-time students, military, prisoners; people who looked in the past 12 months but not the past 4 weeks"],
+  ["Discouraged workers","Available for work but stopped looking because they believe no jobs are available. Counted as not in the labor force"],
+  ["Unemployment rate","<span class='f'>Unemployed / Labor force × 100</span>"],
+  ["Labor force participation rate","<span class='f'>Labor force / Working-age population × 100</span>"],
+  ["Employment–population ratio","<span class='f'>Employed / Working-age population × 100</span>"],
+  ["Ex 9.1 Include the military","Unemployment rate ↓; participation rate ↑ and employment–population ratio ↑ (adding the same number to top and bottom of a fraction < 1 raises it)"]]],
+ ["Measurement problems & trends",[
+  ["Understates joblessness","Discouraged workers not counted; part-timers who want full-time jobs counted as employed"],
+  ["Overstates joblessness","Some claim to look but don't; some work illegally or conceal jobs to avoid taxes"],
+  ["U-3 vs U-6","U-3 = official rate; U-6 = broader, adds marginally attached and involuntary part-time workers"],
+  ["Participation trends","Men 87% (1948) → 68% (2022); women 33% → 57%; overall 59% → 63% (2023)"],
+  ["Duration of unemployment","In expansions about 20% jobless > 6 months; in 2010 and Jan 2021 about 40%"],
+  ["Establishment (payroll) survey","~300,000 establishments. Drawbacks: no self-employed, misses new firms, no unemployment data, large revisions. Advantage: based on actual payrolls"],
+  ["Labor market churn","Process of creating and destroying jobs. Monthly figures are net changes"],
+  ["AHE vs ECI","AHE excludes benefits and suffers from composition effects. ECI includes benefits and holds the occupation mix constant"]]],
+ ["Types of unemployment",[
+  ["Frictional unemployment","Short-term, from matching workers with jobs. Some is good: it increases efficiency"],
+  ["Seasonal unemployment","Frictional, due to weather, tourism, calendar events. BLS reports seasonally adjusted rates"],
+  ["Structural unemployment","Persistent mismatch between workers' skills/attributes and job requirements"],
+  ["Cyclical unemployment","Caused by a business cycle recession"],
+  ["Full employment / natural rate","Only frictional + structural unemployment remain. Natural rate ≈ 4%–5%"]]],
+ ["Explaining unemployment",[
+  ["Government policies","Job fairs (reduce frictional), retraining programs (reduce structural)"],
+  ["Unemployment insurance","Eases hardship and recessions, but lengthens job search → raises unemployment rate"],
+  ["Minimum wage","If set above the market wage, causes some unemployment"],
+  ["Labor unions","Wages in unionized industries usually above market wage"],
+  ["Efficiency wage","Above-market wage paid to raise productivity → unemployment even when cyclical unemployment is zero"]]],
+ ["Measuring inflation",[
+  ["GDP deflator limits","Broadest measure, but includes investment goods (generators, machine tools); misleading for a typical household"],
+  ["CPI","Average prices paid by a typical urban family of four. 14,000 households surveyed; market basket of 211 goods. Housing 44.4% is largest"],
+  ["CPI formula","<span class='f'>Basket cost this year / Basket cost base year × 100</span>. 900/750 = 120, 925/750 = 123 → inflation 2.5%"],
+  ["Four CPI biases","Substitution bias, increase in quality bias, new product bias, outlet bias → CPI overstates inflation by 0.5–1 percentage point"],
+  ["PPI","Prices received by producers at all stages (intermediate goods, raw materials). Early warning of CPI changes"]]],
+ ["Real variables & interest rates",[
+  ["Real variable","<span class='f'>Nominal variable / Price index × 100</span>"],
+  ["Ex 9.5 Real wages","2021–22 nominal AHE +5.4%; real AHE $11.30 → $11.01 = <b>−2.6%</b>"],
+  ["Nominal vs real interest rate","Real = nominal − inflation. If inflation is higher than expected, borrowers gain and lenders lose"],
+  ["Economy-wide nominal rate","Interest rate on three-month U.S. Treasury bills"]]],
+ ["Costs of inflation",[
+  ["Distribution of income","Incomes rising slower than inflation lose purchasing power; fixed-income people hurt most"],
+  ["Anticipated inflation","Paper money loses purchasing power, menu costs, higher taxes on nominal investment returns"],
+  ["Unanticipated inflation","Actual ≠ expected → some people gain, others lose"],
+  ["Deflation","Falling price level. Real rate = nominal + rate of deflation. 1932: 5% nominal, CPI −9.9% → 14.9% real. Worsened the Great Depression"]]]
+]},
+{id:"L10",name:"Economic Growth, the Financial System, and Business Cycles",short:"Growth, Finance & Business Cycles",secs:[
+ ["Long-run economic growth",[
+  ["Long-run economic growth","Process by which rising productivity increases the average standard of living"],
+  ["Real GDP per capita","$6,764 (1900) → $65,415 (2022), over 9×. Understates true gain: many goods did not exist in 1900"],
+  ["Health and growth","Better nutrition, germ theory, clean water → less disease → more productive workers. Life expectancy in high-income countries ~90 by 2050"],
+  ["Average growth rate","Short periods: average yearly rates. 2020–22: (−2.2 + 5.8 + 1.9)/3 = 1.8%"],
+  ["Rule of 70","<span class='f'>Years to double = 70 / Growth rate</span>"],
+  ["Labor productivity","Output per worker or per hour. Determined by capital per hour worked and the level of technology"],
+  ["Physical vs human capital","Physical: manufactured goods used to produce others (computers, factories). Human: knowledge and skills from education, training, experience"],
+  ["Technological change","More output from a given quantity of inputs. Entrepreneurs decide to introduce new technology and fund R&D"],
+  ["Property rights","Secure private property and an independent court system enforcing contracts; government also supports finance, education, transportation, communication"],
+  ["Potential GDP","Real GDP when all firms produce at capacity (normal hours, normal workforce)"]]],
+ ["The financial system",[
+  ["Financial system","Financial markets + financial intermediaries; channels funds from savers to borrowers"],
+  ["Financial markets","Where securities are traded. Stock = partial ownership of a firm. Bond = promise to repay a fixed amount"],
+  ["Financial intermediaries","Banks, mutual funds, pension funds, insurance companies: borrow from savers, lend at higher rates"],
+  ["Three services","Risk sharing (diversification), liquidity (ease of converting to money), information (about borrowers)"]]],
+ ["Saving, investment & loanable funds",[
+  ["Closed economy","<span class='f'>Y = C + I + G → I = Y − C − G</span>"],
+  ["Private saving","<span class='f'>S_private = Y + TR − C − T</span>"],
+  ["Public saving","<span class='f'>S_public = T − G − TR</span>"],
+  ["Total saving","<span class='f'>S = Y − C − G</span>, so <span class='f'>S = I</span>"],
+  ["Budget deficit / surplus","Deficit: T < G + TR (government dissaving). Surplus: spends less than it collects. Balanced: equal"],
+  ["Demand for loanable funds","Firms' willingness to borrow for investment. Downward sloping (also called the investment curve)"],
+  ["Supply of loanable funds","Household saving + government saving/dissaving. Upward sloping"],
+  ["Equilibrium","Determines the <b>real</b> interest rate and quantity of loanable funds"],
+  ["Increase in demand","Technological change or lower corporate taxes → demand shifts right → real rate ↑, saving and investment ↑"],
+  ["Crowding out","Budget deficit → supply shifts left → real rate ↑, investment ↓. Decline in private spending from more government purchases. Surplus = opposite"],
+  ["Table 10.1 summary","Deficit ↑ or desire to consume ↑ → supply left. Saving tax benefits (401(k)) → supply right. Expected profits ↑ → demand right. Corporate taxes ↑ → demand left"],
+  ["Ex 10.2","More federal borrowing → less investment → smaller capital stock → slower labor productivity growth → lower real GDP per capita and incomes"]]],
+ ["The business cycle",[
+  ["Phases","Expansion → peak → recession → trough → expansion"],
+  ["NBER","Business Cycle Dating Committee (private) dates recessions: a significant decline in activity spread across the economy, lasting more than a few months, seen in production, employment, real income, wholesale–retail trade"],
+  ["Near end of expansion","Interest rates rising, wages rising faster than prices, profits falling, household and firm debts high"],
+  ["Recession begins","Firms cut capital goods spending; households cut new houses and durables → layoffs → lower income → less spending"],
+  ["Recovery","Spending declines end, debts reduced, interest rates fall, spending on capital goods, houses, durables rises"],
+  ["Inflation over the cycle","Rises during expansions (esp. near the end), falls during recessions"],
+  ["Unemployment over the cycle","Rises in recessions and keeps rising after they end: employment grows slower than labor force; firms operate below capacity"],
+  ["Why recessions are hard to predict","Cycles are irregular, leading indicators unreliable, triggering events unpredictable"],
+  ["Great Moderation","Smaller fluctuations after 1950. 1950–2009: expansions 61 months, recessions 11 months"],
+  ["Four explanations for stability","Services more important than goods, unemployment insurance/transfers, active stabilization policy, more stable financial system"]]]
+]},
+{id:"L11",name:"Long-Run Economic Growth: Sources and Policies",short:"Long-Run Growth: Sources & Policies",secs:[
+ ["Growth over time and around the world",[
+  ["History of growth","Year 1–1000: 0%. 1000–1820: 0.05%/yr. 1950–2000: 2.20%. 2000–2021: 1.61%"],
+  ["Industrial Revolution","Application of mechanical power to production, England around 1750"],
+  ["Why England? (North)","Glorious Revolution of 1688: Parliament controls government → credible protection of property rights and wealth, no arbitrary tax increases"],
+  ["Adam Smith (1776)","The Wealth of Nations: free individuals to pursue wealth → greatest good. Deregulation → spinning jenny, water frame, steam engine"],
+  ["Small growth differences matter","1960–2019: Ghana 0.4%, Mexico 1.9%, Turkey 2.7% → huge gaps in living standards"],
+  ["Country groups","High-income (industrial, developed) vs lower-income (developing). 1980s–90s newly industrializing countries: Singapore, South Korea"],
+  ["Is income all that matters?","Living standards can rise without much income growth: cheap vaccines, mosquito nets, valuing girls' education, political freedoms"]]],
+ ["What determines growth",[
+  ["Economic growth model","Explains growth rates in real GDP per capita over the long run"],
+  ["Sources of technological change","Better machinery and equipment, more human capital, better organization of production (just-in-time)"],
+  ["Per-worker production function","Relationship between real GDP per hour worked (Y/L) and capital per hour worked (K/L), holding technology constant"],
+  ["Law of diminishing returns","Adding capital to fixed labor raises output by smaller amounts: $75→100 gives $48→53; $100→125 gives $53→57"],
+  ["Role of technology","Shifts the production function up, avoiding diminishing returns. Rising living standards long-run require continuing technological change"],
+  ["Soviet Union","Capital per hour grew fast but technology slowly → diminishing returns. Managers were government employees: no incentive, no competition. Collapsed 1991"]]],
+ ["New growth theory & Schumpeter",[
+  ["New growth theory (Romer)","Technological change is driven by economic incentives in the market system. Accumulation of knowledge capital is key"],
+  ["Returns to knowledge capital","Diminishing for a single firm, <b>increasing returns</b> for the whole economy"],
+  ["Rival / excludable","Physical capital is rival and excludable. Knowledge capital is nonrival and nonexcludable → free riding → too little R&D"],
+  ["Policies","Patents and copyrights (patent = exclusive right for 20 years from filing), subsidize R&D, subsidize education"],
+  ["Schumpeter: creative destruction","New products drive old products and firms out of the market. Entrepreneurs are central; profit is the incentive"]]],
+ ["Growth in the United States",[
+  ["Growth in real GDP per hour","1800–1900 1.3%, 1900–49 2.2%, 1950–73 2.6%, 1974–95 1.5%, 1996–2005 2.4% (IT), 2006–2022 1.1%"],
+  ["Institutionalized innovation","20th century: corporate R&D labs, university research; National Science Foundation created 1950"],
+  ["Optimists vs pessimists","Services (Google, Facebook) are hard to measure. Some say IT gains are large; others say smaller than railroad, electrification, plumbing, automobile"]]],
+ ["Why isn't the whole world rich?",[
+  ["Catch-up (convergence)","Prediction that GDP per capita grows faster in poor countries than rich ones; returns to capital and technology are higher there"],
+  ["The paradox","Catch-up among today's high-income countries (Korea, Taiwan, Hong Kong), but not for developing countries as a group (DR Congo, Niger had negative growth)"],
+  ["Ex 11.4","Lower 1960 income → faster growth: Taiwan $2,554 → 5.13%, Australia $15,438 → 2.04%. Broadly consistent with the model (Japan grew unusually fast)"],
+  ["Why Europe, Canada, Japan lag the U.S.","More flexible U.S. labor markets (easier firing, shorter unemployment benefits); more efficient U.S. financial system (strong investor protection)"],
+  ["Barriers in low-income countries","Weak institutions, wars and revolutions, poor public education and health, low saving and investment (vicious cycle of poverty)"],
+  ["Property rights / rule of law","Property rights: exclusive use of property, including right to buy/sell. Rule of law: government enforces laws, protects property, enforces contracts"],
+  ["Globalization","Openness to trade and investment. FDI = firm buys or builds a facility abroad. Foreign portfolio investment = buying foreign stocks/bonds. Brings technology and funds"],
+  ["China's limits","Less R&D than U.S., transition gains fading, rural low-wage labor exhausted, low birth rate → shrinking labor force, subsidized state-owned firms"]]],
+ ["Growth policies",[
+  ["Property rights & rule of law","Fight corruption; political stability is a prerequisite"],
+  ["Health & education","Vaccinations, treated water, sanitation; subsidized education"],
+  ["Technological change","High-income: subsidize R&D. Developing: technology via FDI"],
+  ["Saving & investment","Tax-deferred retirement accounts; investment tax credits"],
+  ["Is growth good?","Concerns: pollution, resource depletion, multinationals paying low wages and ignoring safety rules in poor countries"]]]
+]},
+{id:"L12",name:"Aggregate Expenditure and Output in the Short Run",short:"Aggregate Expenditure & Output",secs:[
+ ["The AE model",[
+  ["Aggregate expenditure","<span class='f'>AE = C + I + G + NX</span> (I = planned investment)"],
+  ["Aggregate expenditure model","Short-run relationship between total spending and real GDP, assuming a constant price level"],
+  ["Planned vs actual investment","Unplanned inventory increase → actual > planned. Unplanned decrease → actual < planned. Equal only with no unplanned inventory change"],
+  ["Macroeconomic equilibrium","<span class='f'>AE = GDP</span>"],
+  ["Table 12.2","AE = GDP → inventories unchanged, equilibrium. AE < GDP → inventories rise, GDP and employment fall. AE > GDP → inventories fall, GDP and employment rise"]]],
+ ["Consumption",[
+  ["Five determinants of consumption","Current disposable income, household wealth (assets − liabilities; permanent changes matter more), expected future income, price level, interest rate (durables most affected)"],
+  ["Consumption function","Relationship between consumption spending and disposable income"],
+  ["MPC","<span class='f'>ΔC / ΔYD</span>. 2017→18: 364 / 530 = 0.69"],
+  ["Consumption and national income","GDP ≈ national income. Disposable income = national income − net taxes. With constant net taxes, MPC is the same either way (3,000 / 4,000 = 0.75)"],
+  ["MPS","Change in saving / change in income. <span class='f'>Y = C + S + T</span>, ΔT = 0 → <span class='f'>MPC + MPS = 1</span>"]]],
+ ["Investment, government, net exports",[
+  ["Four determinants of investment","Expectations of future profitability, interest rate (higher → less), taxes (lower corporate tax, tax incentives → more), cash flow (largest part is profit)"],
+  ["Residential investment","Fell sharply in 2007–09, recovered slowly; low home-buying by young households"],
+  ["Government purchases","Federal, state, local spending on goods and services; transfers excluded"],
+  ["Net exports over the cycle","Rise during U.S. recessions, fall during expansions"],
+  ["Three determinants of net exports","Relative price levels (lower U.S. inflation → NX ↑), relative GDP growth (faster U.S. growth → NX ↓), exchange rate (stronger dollar → NX ↓)"]]],
+ ["The 45°-line diagram",[
+  ["Keynesian cross","Real GDP (Y) on the horizontal axis, planned AE on the vertical axis. All equilibrium points lie on the 45° line"],
+  ["Simplifying assumptions","GDP changes don't affect I, G, NX; their other determinants are constant; planned investment fixed for the year"],
+  ["Adjustment","At $16T, AE > GDP → inventories fall → firms raise production → equilibrium at $20T"],
+  ["Recession on the diagram","Equilibrium $19.2T < potential $20T (4% below) → firms below capacity, unemployment above natural rate, until AE rises"],
+  ["Table 12.4","At Y = 20,000: AE = 16,000 + 2,500 + 2,500 − 1,000 = 20,000 → equilibrium"]]],
+ ["The multiplier effect",[
+  ["Example","Planned investment +$200B → equilibrium GDP +$800B → multiplier = 4"],
+  ["Autonomous expenditure","Expenditure that does not depend on the level of GDP"],
+  ["Multiplier effect","Process by which a change in autonomous expenditure leads to a larger change in real GDP (rounds of induced consumption)"],
+  ["Deriving the formula","<span class='f'>C = C̄ + MPC·Y</span>, I, G, NX fixed → <span class='f'>Y = (C̄ + Ī + Ḡ + NX̄) / (1 − MPC)</span>"],
+  ["Multiplier","<span class='f'>1 / (1 − MPC)</span>"],
+  ["Summary","Works up and down; makes the economy more sensitive; larger MPC → larger multiplier. Oversimplified: ignores imports, inflation, interest rates, income taxes"],
+  ["Great Depression (multiplier in reverse)","1929 crash, 1930 Smoot-Hawley tariff → trade war, bank failures → AE fell. Real GDP $1,191B → $877B; unemployment 2.9% → 20.9%"],
+  ["Ex 12.4","Equilibrium where Y = AE; MPC = ΔC/ΔY; new GDP = old + ΔG × 1/(1 − MPC)"],
+  ["Paradox of thrift","More saving helps long-run growth but in the short run lowers AE and real GDP"]]],
+ ["The aggregate demand curve",[
+  ["Price level and AE","Higher price level → lower real wealth (C ↓), U.S. goods dearer (NX ↓), higher interest rates (I ↓) → AE shifts down, equilibrium GDP falls"],
+  ["Aggregate demand (AD) curve","Relationship between price level and planned AE, other factors constant. Price 97 → $20.8T, 100 → $20.0T, 103 → $19.2T"]]]
+]},
+{id:"L13",name:"Aggregate Demand and Aggregate Supply Analysis",short:"AD–AS Analysis",secs:[
+ ["Aggregate demand",[
+  ["AD–AS model","Short-run real GDP and price level set by the intersection of AD and SRAS; fluctuations come from shifts in AD or AS"],
+  ["AD curve","Relationship between the price level and quantity of real GDP demanded (for the whole economy, not one market)"],
+  ["Wealth effect","Price level ↑ → real household wealth ↓ → consumption ↓"],
+  ["Interest-rate effect","Price level ↑ → need more money → withdraw/sell assets → interest rates ↑ → investment ↓"],
+  ["International-trade effect","U.S. price level ↑ relative to others → exports ↓, imports ↑ → net exports ↓"],
+  ["Movement vs shift","Price level change = movement along AD. Any other factor = shift. (Ex 13.1: 105 → 110 is a movement; pessimistic firms shift AD left)"],
+  ["AD shifters","Policy (monetary: higher rates → left; fiscal: G ↑ → right, income/business taxes ↑ → left), expectations of households and firms, foreign variables (faster foreign growth or weaker dollar → NX ↑ → right)"]]],
+ ["Aggregate supply",[
+  ["Potential GDP","Also full-employment GDP: firms at normal capacity, only frictional and structural unemployment"],
+  ["LRAS","<b>Vertical</b> at potential GDP: price level doesn't change capacity. Shifts right each year (more workers, more capital, technological change)"],
+  ["Why SRAS slopes up","Input prices rise more slowly than output prices; some firms slow to adjust prices"],
+  ["Sticky wages & prices","Contracts (steel mill's multiyear coal contract), wages adjusted once a year, menu costs"],
+  ["SRAS shifters","Labor force/capital ↑ (right), technological change (right), expected price level ↑ (left), adjusting to past underestimates of price level (left), supply shock (left)"],
+  ["Supply shock","Unexpected event that shifts SRAS, often a change in the price of an important natural resource (oil)"]]],
+ ["Short-run and long-run equilibrium",[
+  ["Long-run equilibrium","AD and SRAS intersect on the LRAS curve"],
+  ["Recession (AD left)","Short run: GDP ↓, price 115 → 113. Long run: lower wages and prices → SRAS right → back to potential GDP at price 111"],
+  ["Automatic mechanism","The adjustment back to potential GDP without policy"],
+  ["Expansion (AD right)","Short run: GDP ↑, price 115 → 118. Long run: higher wages → SRAS left → back to potential GDP at price 121"],
+  ["Stagflation","Inflation + recession, usually from a supply shock (oil ↑ → SRAS left). Long run: wages/prices fall back, or policy shifts AD right (permanently higher price level)"],
+  ["Covid-19 (2020)","SRAS left (shutdowns, supply chains) and AD left (C, I, exports ↓). GDP $21.0T → $19.0T; price 104.5 → 104.6"],
+  ["V vs U recessions","1981–82 and 2020 were V-shaped (quick return); 2007–09 U-shaped. On average 6 quarters to regain the prior peak"]]],
+ ["Dynamic AD–AS model",[
+  ["Three facts","Potential GDP rises (LRAS right); AD usually shifts right; SRAS shifts right unless high inflation is expected"],
+  ["Usual cause of inflation","Total spending grows faster than total production: AD shifts right more than LRAS → price 115 → 118"],
+  ["2007–09 recession: three causes","End of the housing bubble (residential investment ↓), financial crisis (mortgage defaults → credit crunch → C and I ↓), oil price spike ($34 in 2004 → $140 in 2008, SRAS left)"],
+  ["2009 outcome","Real GDP $16.3T, price 88.6 vs potential $17.3T. Unemployment 4.6% → 5.8% → 9.3%"],
+  ["Ex 13.4 Oil shock 1974–75","Oil $3 → over $10. SRAS left, LRAS right (6.13 → 6.32), AD fixed → real GDP 6.07 → 6.06, price 25.4 → 27.8"]]]
+]}
+];
+/* ---------- graphs ---------- */
+const X=x=>+(44+x*2.7).toFixed(1),Y=y=>+(214-y*1.8).toFixed(1);
+const SV=(l,i)=>`<svg viewBox="0 0 340 248" role="img" aria-label="${l}">${i}</svg>`;
+const AX=(xl,yl)=>`<path class="ax" d="M${X(0)} ${Y(100)}V${Y(0)}H${X(100)}"/><text x="${X(100)}" y="244" text-anchor="end">${xl}</text><text x="6" y="22">${yl}</text>`;
+const L=(a,b,c,d,k)=>`<line class="${k}" x1="${X(a)}" y1="${Y(b)}" x2="${X(c)}" y2="${Y(d)}"/>`;
+const T=(x,y,s,k="",an="start")=>`<text class="${k}" x="${X(x)}" y="${Y(y)}" text-anchor="${an}">${s}</text>`;
+const D=(x,y,lab)=>`<circle class="dt" cx="${X(x)}" cy="${Y(y)}" r="3.2"/>`+(lab?`<text class="tl" x="${X(x)+6}" y="${Y(y)-5}">${lab}</text>`:"");
+const G=(x,y,xl,yl,an="middle")=>`<path class="g" d="M${X(0)} ${Y(y)}H${X(x)}V${Y(0)}"/>`+(yl?`<text x="${X(0)-4}" y="${Y(y)+3.5}" text-anchor="end">${yl}</text>`:"")+(xl?`<text x="${X(x)}" y="${Y(0)+13}" text-anchor="${an}">${xl}</text>`:"");
+const ARr=(x1,y1,x2,y2)=>{const t=Math.atan2(y2-y1,x2-x1),h=7;return `<line class="arl" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/><polygon class="arh" points="${x2},${y2} ${(x2-h*Math.cos(t-.45)).toFixed(1)},${(y2-h*Math.sin(t-.45)).toFixed(1)} ${(x2-h*Math.cos(t+.45)).toFixed(1)},${(y2-h*Math.sin(t+.45)).toFixed(1)}"/>`};
+const AR=(a,b,c,d)=>ARr(X(a),Y(b),X(c),Y(d));
+const FN=(f,a,b,k)=>{let p=[];for(let x=a;x<=b+1e-9;x+=1)p.push(X(x)+","+Y(f(x)));return `<polyline class="${k}" points="${p.join(" ")}"/>`};
+const BX=(x,y,w,h,a,b,k="bx")=>`<rect class="${k}" x="${x}" y="${y}" width="${w}" height="${h}" rx="5"/><text class="tl" x="${x+w/2}" y="${y+(b?14:h/2+4)}" text-anchor="middle">${a}</text>`+(b?`<text x="${x+w/2}" y="${y+27}" text-anchor="middle">${b}</text>`:"");
+const PF=x=>70*(1-Math.exp(-x/30));
+const FIG={
+ circ:()=>SV("Circular flow",BX(115,8,110,30,"Households")+BX(115,198,110,30,"Firms")+
+   `<path class="cn" d="M115 23H58V213H108"/>`+ARr(100,213,113,213)+`<text x="50" y="120" transform="rotate(-90 50 120)" text-anchor="middle">Spending on goods &amp; services</text>`+
+   `<path class="cn" d="M225 213H282V23H232"/>`+ARr(240,23,227,23)+`<text x="292" y="120" transform="rotate(90 292 120)" text-anchor="middle">Wages, interest, rent, profit</text>`+
+   ARr(150,40,150,194)+`<text x="144" y="120" transform="rotate(-90 144 120)" text-anchor="middle">Factors of production</text>`+
+   ARr(190,196,190,42)+`<text x="202" y="120" transform="rotate(90 202 120)" text-anchor="middle">Goods &amp; services</text>`+
+   `<text class="tl" x="170" y="245" text-anchor="middle">GDP = total expenditure = total income</text>`),
+ gdpbar:()=>{const yz=v=>+(214-(v+10)/90*180).toFixed(1),z=yz(0),dat=[["Consumption",68,"$17,512B"],["Investment",18.5,"$4,757B"],["Gov't",17.3,"$4,447B"],["Net exports",-3.8,"−$971B"]];
+   return SV("GDP components 2022",`<text x="6" y="22">Share of GDP, 2022</text>`+dat.map((r,i)=>{const cx=92+i*68,top=Math.min(yz(r[1]),z),h=Math.abs(yz(r[1])-z);
+   return `<rect class="${r[1]<0?"neg":"bfill"}" x="${cx-20}" y="${top}" width="40" height="${h}"/><text class="tl" x="${cx}" y="${r[1]<0?z+h+12:top-14}" text-anchor="middle">${r[1]}%</text><text x="${cx}" y="${r[1]<0?z+h+24:top-3}" text-anchor="middle">${r[2]}</text><text x="${cx}" y="240" text-anchor="middle">${r[0]}</text>`}).join("")+`<line class="ax" x1="50" y1="${z}" x2="330" y2="${z}"/>`)},
+ rvn:()=>SV("Real vs nominal GDP",AX("Year","GDP ($ billions)")+L(81.5,0,81.5,100,"g")+T(80.5,95,"Base year 2017","","end")+
+   `<polyline class="d1" points="${X(0)},${Y(37.7)} ${X(81.5)},${Y(65)} ${X(100)},${Y(72.7)}"/><polyline class="s1" points="${X(0)},${Y(25.3)} ${X(81.5)},${Y(65)} ${X(100)},${Y(85.8)}"/>`+
+   T(14,50,"Real GDP","tb")+T(22,24,"Nominal GDP","tr")+D(81.5,65)+T(3,4,"nominal < real","","start")+T(99,62,"nominal > real","","end")+
+   `<text x="${X(0)}" y="227" text-anchor="middle">1995</text><text x="${X(81.5)}" y="227" text-anchor="middle">2017</text><text x="${X(100)}" y="227" text-anchor="middle">2022</text>`+
+   `<text x="40" y="${Y(33.3)+3}" text-anchor="end">10k</text><text x="40" y="${Y(66.7)+3}" text-anchor="end">20k</text><text x="40" y="${Y(100)+3}" text-anchor="end">30k</text>`),
+ tree:()=>SV("Labor force tree",BX(115,4,110,34,"Working-age pop.","266.8M")+BX(25,70,120,34,"Labor force","167.0M","bx2")+BX(195,70,120,34,"Not in labor force","99.9M")+
+   BX(6,138,72,34,"Employed","161.0M")+BX(88,138,72,34,"Unemployed","6.0M")+BX(178,138,72,34,"Not available","94.1M")+BX(260,138,74,34,"Want a job","5.8M")+
+   `<path class="cn" d="M170 38V54H85V70M170 54H255V70M85 104V120H42V138M85 120H124V138M255 104V120H214V138M255 120H297V138"/>`+
+   `<text x="334" y="186" text-anchor="end">incl. discouraged 0.3M</text>`+
+   `<text class="tl" x="10" y="214">Unemployment rate = 6.0 / 167.0 = 3.6%</text><text class="tl" x="10" y="232">Participation rate = 167.0 / 266.8 = 62.6%</text>`),
+ cpi:()=>{const dat=[["Housing",44.4],["Transportation",16.7],["Food & beverages",14.4],["Medical care",8.1],["Education & comm.",5.8],["Recreation",5.4],["Other",2.7],["Apparel",2.5]];
+   return SV("CPI market basket",`<text x="6" y="16">CPI market basket, Dec 2022</text>`+dat.map((r,i)=>{const y=28+i*26,w=r[1]/44.4*170;return `<text x="112" y="${y+13}" text-anchor="end">${r[0]}</text><rect class="${i?"bfill":"neg"}" x="118" y="${y}" width="${w.toFixed(1)}" height="18" rx="2"/><text class="tl" x="${(122+w).toFixed(1)}" y="${y+13}">${r[1]}%</text>`}).join(""))},
+ lf:()=>SV("Loanable funds market",AX("Loanable funds","Real interest rate")+G(50,50,"Equilibrium Q","r*")+L(15,85,85,15,"d1")+T(86,12,"Demand (investment)","tb","end")+L(15,15,85,85,"s1")+T(86,88,"Supply (saving)","tr","end")+D(50,50,"S = I")),
+ lfD:()=>SV("Increase in demand for loanable funds",AX("Loanable funds","Real interest rate")+G(50,50,"L₁","r₁")+G(57.5,57.5,"L₂","r₂")+L(15,85,85,15,"d1 fade")+T(86,13,"D₁","tb")+L(30,85,95,20,"d1")+T(96,20,"D₂","tb")+L(15,15,85,85,"s1")+T(86,86,"S","tr")+AR(27,75,38,75)+D(50,50,"A")+D(57.5,57.5,"B")+T(2,95,"Tech change / lower corporate tax → r ↑, I ↑","tl")),
+ lfS:()=>SV("Budget deficit",AX("Loanable funds","Real interest rate")+G(50,50,"L₁","r₁")+G(42.5,57.5,"L₂","r₂")+L(15,85,85,15,"d1")+T(86,13,"D","tb")+L(15,15,85,85,"s1 fade")+T(86,86,"S₁","tr")+L(5,20,75,90,"s1")+T(76,91,"S₂","tr")+AR(73,75,62,75)+D(50,50,"A")+D(42.5,57.5,"B")+T(2,97,"Deficit → S shifts left","tl")+T(2,91,"r ↑, I ↓ = crowding out","")),
+ cycle:()=>{const f=x=>28+.35*x+14*Math.sin((x-8)/100*2*Math.PI*1.6);let ex=[];for(let x=.5;x<100;x+=.5){const a=f(x-.5),b=f(x),c=f(x+.5);if(b>a&&b>c)ex.push(["P",x]);if(b<a&&b<c)ex.push(["T",x])}
+   let bands="",labs="";ex.forEach((e,i)=>{if(e[0]==="P"){const t=ex[i+1]?ex[i+1][1]:100;bands+=`<rect class="rec" x="${X(e[1])}" y="${Y(100)}" width="${(X(t)-X(e[1])).toFixed(1)}" height="${(Y(0)-Y(100)).toFixed(1)}"/>`;labs+=D(e[1],f(e[1]))+T(e[1],f(e[1])+5,"Peak","tl","middle")}else{labs+=D(e[1],f(e[1]))+T(e[1],f(e[1])-9,"Trough","tl","middle")}});
+   return SV("Business cycle",bands+AX("Time","Real GDP")+FN(f,0,100,"d1")+labs+`<rect class="rec" x="250" y="12" width="12" height="10"/><text x="266" y="21">Recession</text>`)},
+ prod:()=>{const xs=[37.5,50,62.5,75],lb=["$75","$100","$125","$150"],dy=["+5","+4","+3"];let s="";xs.forEach((x,i)=>{s+=G(x,PF(x),lb[i],"");if(i<3){const n=xs[i+1];s+=L(x,PF(x),n,PF(x),"st")+L(n,PF(x),n,PF(n),"st")+T(n+1,(PF(x)+PF(n))/2-1,dy[i],"tr")}});
+   return SV("Per-worker production function",AX("Capital per hour worked, K/L","Real GDP per hour, Y/L")+s+FN(PF,0,100,"d1")+xs.map(x=>D(x,PF(x))).join("")+T(100,73,"Production function","tb","end")+T(48,22,"Equal ↑ in K/L → smaller ↑ in Y/L","tl"))},
+ tech:()=>{let s=G(75,PF(75),"$150","");[1,1.1,1.2,1.3].forEach((m,i)=>{s+=FN(x=>PF(x)*m,0,98,"d1"+(i?"":" fade"))+T(100.5,PF(98)*m-1,"PF"+"₁₂₃₄"[i],"tb")+`<text x="40" y="${Y(PF(75)*m)+3.5}" text-anchor="end">$${60+i*5}</text>`+`<path class="g" d="M${X(0)} ${Y(PF(75)*m)}H${X(75)}"/>`+D(75,PF(75)*m)});
+   return SV("Technological change",AX("Capital per hour worked, K/L","Real GDP per hour, Y/L")+s+AR(86,PF(86)+1,86,PF(86)*1.3-1)+T(30,10,"Tech change shifts the function up","tl"))},
+ catch:()=>SV("Catch-up",AX("Initial real GDP per capita","Growth in real GDP per capita")+L(8,88,92,12,"d1")+T(52,52,"Catch-up line","tb")+T(14,90,"Poorer countries should grow faster","tl")+T(98,24,"Richer countries should grow slower","tl","end")),
+ cons:()=>SV("Consumption function",AX("Real national income, Y","Consumption, C")+L(0,15,100,90,"d1")+G(40,45,"$16,000B","$13,000B")+G(60,60,"$20,000B","$16,000B")+L(40,45,60,45,"st")+L(60,45,60,60,"st")+T(50,39,"ΔY = $4,000B","tr","middle")+T(61,51,"ΔC = $3,000B","tr")+D(40,45,"A")+D(60,60,"B")+T(4,92,"MPC = ΔC / ΔY = 3,000 / 4,000 = 0.75","tl")+T(98,82,"C","tb")),
+ cross:()=>SV("Keynesian cross",AX("Real GDP, Y","Planned AE")+L(0,0,95,95,"lr")+T(88,97,"Y = AE (45°)","tg","end")+L(0,25,95,72.5,"d1")+T(96,72,"AE","tb")+G(50,50,"$20T","")+D(50,50,"E")+
+   L(28,28,28,39,"st")+T(28,46,"inventories ↓","tr","middle")+L(80,65,80,80,"st")+T(80,58,"inventories ↑","tr","middle")+AR(20,6,36,6)+AR(84,6,66,6)+T(6,12,"output ↑","")+T(96,12,"output ↓","","end")),
+ gap:()=>SV("Recession on the 45-degree diagram",AX("Real GDP, Y","Planned AE")+L(0,0,95,95,"lr")+T(88,97,"Y = AE","tg","end")+L(0,20,95,77,"d1")+T(96,77,"AE","tb")+L(60,0,60,95,"g")+T(61,10,"Potential GDP","")+G(50,50,"19.2T","","end")+`<text x="${X(60)}" y="${Y(0)+13}" text-anchor="start">20.0T</text>`+D(50,50)+L(60,56,60,60,"st")+T(62,57,"shortfall in AE","tr")),
+ mult:()=>SV("Multiplier",AX("Real GDP, Y","Planned AE")+L(0,0,95,95,"lr")+T(88,97,"Y = AE","tg","end")+L(0,12.5,95,83.75,"d1 fade")+T(96,82,"AE₁","tb")+L(0,17.5,95,88.75,"d1")+T(96,89,"AE₂","tb")+AR(15,24,15,28.5)+T(17,22,"ΔI = $200B","tl")+
+   G(50,50,"19.2","")+G(70,70,"20.0","")+D(50,50,"A")+D(70,70,"B")+AR(50,7,69,7)+T(60,10,"ΔY = $800B","tl","middle")+T(4,92,"Multiplier = 1 / (1 − MPC) = 800 / 200 = 4","tl")),
+ ad:()=>SV("Aggregate demand curve",AX("Real GDP ($T)","Price level")+G(30,70,"19.2","103")+G(50,50,"20.0","100")+G(70,30,"20.8","97")+L(15,85,85,15,"d1")+T(86,13,"AD","tb")+D(30,70)+D(50,50)+D(70,30)+T(55,80,"Higher P → wealth, interest-rate,","tl")+T(55,73,"trade effects → less spending","tl")),
+ adasEq:()=>SV("Long-run equilibrium",AX("Real GDP ($T)","Price level")+G(50,50,"20.0","115")+L(50,4,50,96,"lr")+T(51,92,"LRAS","tg")+L(15,85,85,15,"d1")+T(86,12,"AD","tb")+L(15,15,85,85,"s1")+T(86,86,"SRAS","tr")+D(50,50,"A")),
+ rec:()=>SV("Recession",AX("Real GDP ($T)","Price level")+G(50,50,"","115")+G(42.5,42.5,"19.8","113","end")+G(50,35,"20.0","111","start")+L(50,4,50,96,"lr")+T(51,94,"LRAS","tg")+L(15,85,85,15,"d1 fade")+T(86,13,"AD₁","tb")+L(10,75,75,10,"d1")+T(76,8,"AD₂","tb")+L(15,15,85,85,"s1 fade")+T(86,86,"SRAS₁","tr")+L(25,10,95,80,"s1")+T(96,80,"SRAS₂","tr")+AR(23,75,12,75)+AR(72,70,83,70)+D(50,50,"A")+D(42.5,42.5,"B")+D(50,35,"C")),
+ exp:()=>SV("Expansion",AX("Real GDP ($T)","Price level")+G(50,50,"20.0","115","end")+G(57.5,57.5,"20.3","118","start")+G(50,65,"","121")+L(50,4,50,96,"lr")+T(51,4,"LRAS","tg")+L(15,85,85,15,"d1 fade")+T(86,13,"AD₁","tb")+L(25,90,95,20,"d1")+T(96,20,"AD₂","tb")+L(15,15,85,85,"s1 fade")+T(86,86,"SRAS₁","tr")+L(5,20,75,90,"s1")+T(76,91,"SRAS₂","tr")+AR(21,80,34,80)+AR(29,30,17,30)+D(50,50,"A")+D(57.5,57.5,"B")+D(50,65,"C")),
+ shock:()=>SV("Supply shock",AX("Real GDP ($T)","Price level")+G(50,50,"20.0","115","start")+G(42.5,57.5,"19.7","117","end")+L(50,4,50,96,"lr")+T(51,4,"LRAS","tg")+L(15,85,85,15,"d1")+T(86,13,"AD","tb")+L(15,15,85,85,"s1 fade")+T(86,86,"SRAS₁","tr")+L(5,20,75,90,"s1")+T(76,91,"SRAS₂","tr")+AR(29,30,17,30)+D(50,50,"A")+D(42.5,57.5,"B")+T(60,30,"Stagflation:","tl")+T(60,23,"GDP ↓ and P ↑","")),
+ dyn:()=>SV("Dynamic AD-AS",AX("Real GDP ($T)","Price level")+G(40,50,"20.0","115")+G(55,60,"20.4","118")+L(40,4,40,90,"lr fade")+T(39,92,"LRAS₁","tg","end")+L(55,4,55,90,"lr")+T(56,92,"LRAS₂","tg")+AR(41,86,54,86)+
+   L(5,85,85,5,"d1 fade")+T(86,4,"AD₁","tb")+L(25,90,95,20,"d1")+T(96,20,"AD₂","tb")+L(5,15,70,80,"s1 fade")+T(71,79,"SRAS₁","tr")+L(10,15,85,90,"s1")+T(86,90,"SRAS₂","tr")+AR(14,75,38,75)+D(40,50,"A")+D(55,60,"B")+T(62,40,"AD shifts more than LRAS","tl")+T(62,33,"→ price level rises","tl"))
+};
+const FIGS={
+ L8:[[1,"circ","Graph: Circular-flow diagram","Households supply factors of production and buy goods; firms pay wages, interest, rent, profit. Measure GDP by expenditure or by income"],
+     [2,"gdpbar","Graph: Components of GDP, 2022","Consumption is by far the largest component; net exports are negative"],
+     [4,"rvn","Graph: Nominal vs real GDP, 1995–2022","The lines cross at the base year 2017. Before it nominal < real, after it nominal > real"]],
+ L9:[[0,"tree","Graph: Employment status of the working-age population","June 2023 figures. Discouraged workers sit outside the labor force"],
+     [4,"cpi","Graph: CPI market basket","Housing, transportation and food make up almost three-quarters of the basket"]],
+ L10:[[2,"lf","Graph: Market for loanable funds","Downward-sloping demand (firms' investment) meets upward-sloping supply (saving). Equilibrium sets the real interest rate and S = I"],
+      [2,"lfD","Graph: Increase in demand for loanable funds","Demand shifts right: real rate r₁ → r₂, quantity L₁ → L₂, saving and investment both rise"],
+      [2,"lfS","Graph: Effect of a budget deficit","Supply shifts left: real rate rises, quantity of loanable funds and investment fall (crowding out)"],
+      [3,"cycle","Graph: Idealized business cycle","Expansion to a peak, recession to a trough, then the next expansion"]],
+ L11:[[1,"prod","Graph: Per-worker production function","Each equal $25 increase in K/L raises Y/L by less: $48 → $53 → $57 → $60 (diminishing returns)"],
+      [1,"tech","Graph: Technological change shifts the production function up","At the same K/L of $150, Y/L rises from $60 to $65, $70, $75"],
+      [4,"catch","Graph: Catch-up line","Countries starting with lower real GDP per capita should grow faster"]],
+ L12:[[1,"cons","Graph: Consumption function and MPC","Slope of the consumption function = MPC. Between A and B: 3,000 / 4,000 = 0.75"],
+      [3,"cross","Graph: Keynesian cross (45° line)","Equilibrium where AE crosses Y = AE. Left of it inventories fall and output rises; right of it inventories rise and output falls"],
+      [3,"gap","Graph: Recession on the 45° diagram","Equilibrium $19.2T below potential $20.0T; the gap at potential GDP is the shortfall in AE"],
+      [4,"mult","Graph: The multiplier effect","AE shifts up by ΔI = $200B; equilibrium GDP rises from $19.2T to $20.0T (ΔY = $800B, multiplier 4)"],
+      [5,"ad","Graph: Aggregate demand curve","Price 103 → $19.2T, 100 → $20.0T, 97 → $20.8T"]],
+ L13:[[2,"adasEq","Graph: Long-run macroeconomic equilibrium","AD and SRAS intersect on LRAS: real GDP $20.0T, price level 115"],
+      [2,"rec","Graph: Decrease in AD (recession)","AD left → B (GDP $19.8T, P 113). Wages and prices fall → SRAS right → C back at potential, P 111"],
+      [2,"exp","Graph: Increase in AD (expansion)","AD right → B (GDP $20.3T, P 118). Costs rise → SRAS left → C back at potential, P 121"],
+      [2,"shock","Graph: Supply shock (stagflation)","Oil price ↑ shifts SRAS left: GDP $20.0T → $19.7T, P 115 → 117"],
+      [3,"dyn","Graph: Dynamic AD–AS and inflation","LRAS and SRAS shift right, AD shifts right by more → GDP $20.0T → $20.4T and P 115 → 118"]]
+};
+
+/* ---------- summary tables with mini graphs ---------- */
+const isect=(a,b)=>{const[x1,y1,x2,y2]=a,[x3,y3,x4,y4]=b,d=(x1-x2)*(y3-y4)-(y1-y2)*(x3-x4),t=((x1-x3)*(y3-y4)-(y1-y3)*(x3-x4))/d;return[x1+t*(x2-x1),y1+t*(y2-y1)]};
+const xAt=(l,y)=>l[0]+(y-l[1])*(l[2]-l[0])/(l[3]-l[1]);
+const sh=(l,dx)=>[l[0]+dx,l[1],l[2]+dx,l[3]];
+const ML=(l,k)=>`<line class="${k}" x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}"/>`;
+const MD=p=>`<circle class="dt" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.8"/>`;
+const MSV=(inner,yl,xl,lab)=>`<svg class="mini" viewBox="0 0 134 98" role="img" aria-label="${lab}"><path class="ax" d="M14 6V84H130"/><text x="18" y="12">${yl}</text><text x="130" y="96" text-anchor="end">${xl}</text>${inner}</svg>`;
+const mArr=(o,n,y)=>{const a=xAt(o,y),b=xAt(n,y),s=b>a?1:-1;return ARr(+(a+5*s).toFixed(1),y,+(b-5*s).toFixed(1),y)};
+function miniSRAS(dir){const o=dir>0?[30,80,62,24]:[70,80,102,24],n=sh(o,36*dir);
+  return MSV(ML(o,"s1 fade")+ML(n,"s1")+mArr(o,n,52)+`<text class="tr" x="${o[2]}" y="17" text-anchor="middle">SRAS₁</text><text class="tr" x="${n[2]}" y="17" text-anchor="middle">SRAS₂</text>`,"P","Real GDP","SRAS shifts "+(dir>0?"right":"left"))}
+function miniLF(curve,dir){let D,S,D2,S2,lab;
+  if(curve==="S"){D=[18,26,126,74];S=dir>0?[36,82,76,16]:[66,82,106,16];S2=sh(S,28*dir);
+    return MSV(ML(D,"d1")+ML(S,"s1 fade")+ML(S2,"s1")+MD(isect(D,S))+MD(isect(D,S2))+mArr(S,S2,40)+`<text class="tb" x="126" y="70" text-anchor="end">D</text><text class="tr" x="${S[2]}" y="12" text-anchor="middle">S₁</text><text class="tr" x="${S2[2]}" y="12" text-anchor="middle">S₂</text>`,"r","Loanable funds","Supply shifts "+(dir>0?"right":"left"))}
+  D=dir>0?[16,22,104,70]:[40,22,128,70];D2=sh(D,24*dir);S=[52,82,94,12];
+  return MSV(ML(S,"s1")+ML(D,"d1 fade")+ML(D2,"d1")+MD(isect(D,S))+MD(isect(D2,S))+mArr(D,D2,58)+`<text class="tr" x="94" y="10" text-anchor="middle">S</text><text class="tb" x="${D[2]}" y="${D[3]+11}" text-anchor="end">D₁</text><text class="tb" x="${D2[2]}" y="${D2[3]+11}" text-anchor="end">D₂</text>`,"r","Loanable funds","Demand shifts "+(dir>0?"right":"left"))}
+const SUMT=(h,rows)=>`<div class="tw"><table class="sum"><tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${i===r.length-1?' class="gcell"':""}>${c}</td>`).join("")}</tr>`).join("")}</table></div>`;
+FIG.t101=()=>SUMT(["An increase in…","will shift the…","causing…","Graph"],[
+ ["the government's budget deficit","supply of loanable funds curve to the <b>left</b>","the real interest rate to <b>increase</b> and investment to <b>decrease</b>",miniLF("S",-1)],
+ ["the desire of households to consume today","supply of loanable funds curve to the <b>left</b>","the real interest rate to <b>increase</b> and investment to <b>decrease</b>",miniLF("S",-1)],
+ ["tax benefits for saving, such as 401(k) retirement accounts, which increase the incentive to save","supply of loanable funds curve to the <b>right</b>","the real interest rate to <b>decrease</b> and investment to <b>increase</b>",miniLF("S",1)],
+ ["expected future profits from new investments","demand for loanable funds curve to the <b>right</b>","the real interest rate and the level of investment to <b>increase</b>",miniLF("D",1)],
+ ["corporate taxes","demand for loanable funds curve to the <b>left</b>","the real interest rate and the level of investment to <b>decrease</b>",miniLF("D",-1)]]);
+FIG.t132=()=>SUMT(["An increase in…","shifts SRAS…","because…","Graph"],[
+ ["the labor force or the capital stock","to the <b>right</b>","more output can be produced at every price level",miniSRAS(1)],
+ ["productivity","to the <b>right</b>","the costs of producing output fall",miniSRAS(1)],
+ ["the expected future price level","to the <b>left</b>","expecting the price level to increase leads workers and firms to increase wages and prices",miniSRAS(-1)],
+ ["workers and firms adjusting to having previously underestimated the price level","to the <b>left</b>","workers and firms attempt to catch up to a higher price level by increasing wages and prices",miniSRAS(-1)],
+ ["the price of an important natural resource, or a natural disaster or pandemic","to the <b>left</b>","the costs of producing output rise or many firms are forced to temporarily close",miniSRAS(-1)]]);
+FIGS.L10.push([2,"t101","Table 10.1: Summary of the loanable funds model","What shifts supply vs demand for loanable funds, and the effect on the real interest rate and investment"]);
+FIGS.L13.push([1,"t132","Table 13.2: Variables that shift the SRAS curve","Labor/capital and productivity shift SRAS right; expected price level, catch-up adjustments and resource-price shocks shift it left"]);
+Object.entries(FIGS).forEach(([cid,arr])=>{const c=CH.find(c=>c.id===cid);arr.forEach(([si,k,t,cap])=>c.secs[si][1].push([t,cap,k]))});
+const body=i=>i.fig?`${i.d}<div class="fig${(i.fig==="t101"||i.fig==="t132")?" wide":""}">${FIG[i.fig]()}</div>`:i.d;
+CH.forEach(c=>{c.items=[];c.secs.forEach((s,si)=>s[1].forEach((it,ii)=>{const id=c.id+"-"+si+"-"+ii;c.items.push({id,t:it[0],d:it[1],sec:s[0],fig:it[2]})}))});
+
+const KEY="econ1220-blank-v1";
+let S={};try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function st(id){return S[id]||(S[id]={draft:"",red:"",blue:"",marks:{},rounds:[],weak:[]})}
+let cur=CH[0].id,step=0,timer=null,secs=0,hintOn=false,blurOn=false;
+try{const h=location.hash.slice(1);if(CH.some(c=>c.id===h))cur=h}catch(e){}
+const INT=[1,3,7,14,30];
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));
+const today=()=>new Date().toISOString().slice(0,10);
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const md=s=>{const[y,m,d]=s.split("-");return MON[+m-1]+" "+(+d)};
+function nextDue(d){if(!d.rounds.length)return null;const last=d.rounds[d.rounds.length-1];const n=INT[Math.min(d.rounds.length-1,INT.length-1)];const t=new Date(last.date);t.setDate(t.getDate()+n);return t.toISOString().slice(0,10)}
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),1800)}
+function chap(){return CH.find(c=>c.id===cur)}
+
+function rail(){
+  $("#rail").innerHTML=CH.map(c=>{const d=st(c.id),due=nextDue(d);let s="Not started";
+    if(d.rounds.length){const p=d.rounds[d.rounds.length-1].pct;s=`${d.rounds.length} round${d.rounds.length>1?"s":""} · last ${p}%`+(due?(due<=today()?` · <span class="due">review due</span>`:` · next ${md(due)}`):"")}
+    return `<button class="chbtn" aria-current="${c.id===cur}" data-c="${c.id}"><span class="no">${c.id}</span><span class="nm">${c.short}</span><span class="st">${s}</span></button>`}).join("");
+  document.querySelectorAll(".chbtn").forEach(b=>b.onclick=()=>{cur=b.dataset.c;stopT();step=0;render()});
+}
+const STEPS=[["Step 1","Learn"],["Step 2","Recall"],["Step 3","Check"],["Step 4","Review"]];
+function render(){
+  const c=chap();$("#chTitle").textContent=`Lecture ${c.id.slice(1)} · ${c.name}`;
+  $("#chSub").textContent=`${c.items.length} key concepts`;
+  $("#steps").innerHTML=STEPS.map((s,i)=>`<button class="step" role="tab" aria-selected="${i===step}" data-s="${i}"><small>${s[0]}</small><span>${s[1]}</span></button>`).join("");
+  document.querySelectorAll(".step").forEach(b=>b.onclick=()=>{step=+b.dataset.s;render()});
+  rail();[study,recall,verify,review][step]();
+}
+let gOnly=false;
+function study(){
+  const c=chap(),d=st(c.id);let last="",h="";
+  c.items.filter(i=>!gOnly||i.fig).forEach(i=>{if(i.sec!==last){if(last)h+="</div>";last=i.sec;h+=`<div class="sec"><h3>${i.sec}</h3>`}
+    h+=`<div class="item ${d.weak.includes(i.id)?"weak":""}"><div class="t">${i.t}</div><div class="d">${body(i)}</div></div>`});if(last)h+="</div>";
+  $("#pane").innerHTML=`<div class="toolbar"><button class="btn" id="bl">${blurOn?"Show all definitions":"Hide definitions to self-test"}</button><button class="btn" id="go2">${gOnly?"Show all concepts":"Graphs only"}</button><span class="hint">Red dot = missed in your last check</span><span class="spacer"></span><button class="btn primary" id="go">Got it → Start recall</button></div>
+  <div class="${blurOn?"blur":""}">${h}</div>`;
+  $("#bl").onclick=()=>{blurOn=!blurOn;study()};
+  $("#go2").onclick=()=>{gOnly=!gOnly;study()};
+  $("#go").onclick=()=>{step=1;render()};
+  document.querySelectorAll(".blur .d").forEach(e=>e.onclick=()=>e.classList.toggle("show"));
+}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function stopT(){clearInterval(timer);timer=null}
+function recall(){
+  const c=chap(),d=st(c.id);
+  $("#pane").innerHTML=`<div class="toolbar"><span class="timer" id="tm">${fmt(secs)}</span><button class="btn" id="tb">${timer?"Pause":"Start timer"}</button><button class="btn" id="hn">${hintOn?"Hide outline":"Show outline only"}</button><span class="spacer"></span><button class="btn red" id="clr">New sheet</button><button class="btn primary" id="done">Done → Check</button></div>
+  <p class="hint" style="margin:0 0 10px">Close your notes. Write every concept, keyword, formula and structure you remember. If you can't recall something, leave it blank. Sketch the graphs on paper (axes, curves, shifts, labels) and tick them in Step 3. Saves automatically.</p>
+  <textarea class="paper" id="pp" spellcheck="false" placeholder="e.g. GDP = market value of all final goods & services produced in a country in a period…"></textarea>
+  ${hintOn?`<div class="skel"><b>Outline:</b> ${c.secs.map(s=>s[0]).join(" · ")}</div>`:""}`;
+  const pp=$("#pp");pp.value=d.draft;pp.oninput=()=>{d.draft=pp.value;save()};
+  $("#tb").onclick=()=>{if(timer){stopT()}else{timer=setInterval(()=>{secs++;const t=$("#tm");if(t)t.textContent=fmt(secs)},1000)}recall()};
+  $("#hn").onclick=()=>{hintOn=!hintOn;recall()};
+  const cb=$("#clr");cb.onclick=()=>{if(cb.dataset.c){d.draft="";d.marks={};save();secs=0;stopT();recall();toast("Fresh sheet ready")}else{cb.dataset.c=1;cb.textContent="Erase everything? Click again"}};
+  $("#done").onclick=()=>{stopT();step=2;render()};
+}
+function verify(){
+  const c=chap(),d=st(c.id);
+  const ok=c.items.filter(i=>d.marks[i.id]==="ok").length,miss=c.items.filter(i=>d.marks[i.id]==="miss").length,n=c.items.length;
+  let last="";
+  const rows=c.items.map(i=>{let h="";if(i.sec!==last){last=i.sec;h=`<div class="chsec">${i.sec}</div>`}
+    const m=d.marks[i.id]||"";return h+`<div class="ci ${m}" data-i="${i.id}"><div class="t">${i.t}</div><div class="d">${body(i)}</div><div class="mk"><button class="o" aria-label="Got it" title="I wrote this">✓</button><button class="x" aria-label="Missed" title="Missing or wrong">✗</button></div></div>`}).join("");
+  $("#pane").innerHTML=`<div class="toolbar"><div style="min-width:200px"><div class="score">Got ${ok} · Missed ${miss} · Unchecked ${n-ok-miss} / ${n}</div><div class="bar"><i style="width:${Math.round(ok/n*100)}%"></i></div></div><span class="spacer"></span><button class="btn red" id="rest">Mark unchecked as missed</button><button class="btn primary" id="fin">Finish check · Save round</button></div>
+  <div class="cmp"><div><p class="colh"><span>Your blank sheet</span><span>${d.draft.trim().split(/\s+/).filter(Boolean).length} words</span></p><div class="mine">${d.draft.trim()?esc(d.draft):'<span class="hint">Nothing written yet. Do Step 2 first.</span>'}</div></div>
+  <div><p class="colh"><span>Original checklist · ✓ if it's in your notes, ✗ if missing or wrong</span></p><div class="chk">${rows}</div></div></div>
+  <div class="pens"><div><p class="colh"><span style="color:var(--red)">Red pen · fill in what you missed</span></p><textarea class="pen r" id="rp" placeholder="Missed definitions, wrong formulas…"></textarea></div>
+  <div><p class="colh"><span style="color:var(--blue)">Blue pen · tips from practice</span></p><textarea class="pen b" id="bp" placeholder="e.g. New houses go in I, not C!"></textarea></div></div>`;
+  document.querySelectorAll(".ci").forEach(r=>{const id=r.dataset.i;
+    r.querySelector(".o").onclick=()=>{d.marks[id]=d.marks[id]==="ok"?"":"ok";save();keep(verify)};
+    r.querySelector(".x").onclick=()=>{d.marks[id]=d.marks[id]==="miss"?"":"miss";save();keep(verify)}});
+  const rp=$("#rp"),bp=$("#bp");rp.value=d.red;bp.value=d.blue;rp.oninput=()=>{d.red=rp.value;save()};bp.oninput=()=>{d.blue=bp.value;save()};
+  $("#rest").onclick=()=>{c.items.forEach(i=>{if(!d.marks[i.id])d.marks[i.id]="miss"});save();keep(verify)};
+  $("#fin").onclick=()=>{const okN=c.items.filter(i=>d.marks[i.id]==="ok").length;const missed=c.items.filter(i=>d.marks[i.id]!=="ok").length;
+    d.rounds.push({date:today(),pct:Math.round(okN/n*100),miss:missed,time:secs});
+    const set=new Set(d.weak);c.items.forEach(i=>{if(d.marks[i.id]==="miss")set.add(i.id);if(d.marks[i.id]==="ok"&&d.rounds.length>1)set.delete(i.id)});d.weak=[...set];
+    save();step=3;render();toast(`Round ${d.rounds.length} saved · recall ${Math.round(okN/n*100)}%`)};
+}
+function keep(fn){const a=document.querySelector(".chk")?.scrollTop||0,y=window.scrollY;fn();const b=document.querySelector(".chk");if(b)b.scrollTop=a;window.scrollTo(0,y)}
+function review(){
+  const c=chap(),d=st(c.id),due=nextDue(d),w=c.items.filter(i=>d.weak.includes(i.id));
+  const hist=d.rounds.map((r,i)=>`<tr><td>Round ${i+1}</td><td>${r.date}</td><td>${r.pct}%</td><td>${r.miss}</td><td>${r.time?fmt(r.time):"–"}</td></tr>`).reverse().join("");
+  $("#pane").innerHTML=`<div class="stats"><div class="stat"><small>Rounds done</small><b>${d.rounds.length}</b></div><div class="stat"><small>Latest recall</small><b>${d.rounds.length?d.rounds[d.rounds.length-1].pct+"%":"–"}</b></div><div class="stat"><small>Next review (1·3·7·14·30 days)</small><b class="${due&&due<=today()?"red":""}">${due?(due<=today()?"Today":md(due)):"–"}</b></div></div>
+  <div class="toolbar"><button class="btn primary" id="again">Review weak spots → New blank sheet</button><button class="btn" id="hide">${blurOn?"Show definitions":"Hide definitions"}</button></div>
+  <h4 style="color:var(--red)">Red-pen weak concepts (${w.length})</h4>
+  ${w.length?w.map(i=>`<div class="weakli" data-i="${i.id}"><div class="t">${i.t}</div><div class="d ${blurOn?"hide":""}">${body(i)}</div><button class="btn">Learned</button></div>`).join(""):`<div class="empty">${d.rounds.length?"No weak concepts. Write another blank sheet on your next review date.":"Finish a Step 3 check and the concepts you missed will collect here."}</div>`}
+  ${d.red.trim()?`<h4>Red-pen notes</h4><div class="pnote r">${esc(d.red)}</div>`:""}
+  ${d.blue.trim()?`<h4>Blue-pen tips</h4><div class="pnote b">${esc(d.blue)}</div>`:""}
+  ${hist?`<h4>Round history</h4><div class="tw"><table class="hist"><tr><th>Round</th><th>Date</th><th>Recall</th><th>Missed</th><th>Time</th></tr>${hist}</table></div>`:""}`;
+  document.querySelectorAll(".weakli").forEach(r=>{r.querySelector(".btn").onclick=()=>{d.weak=d.weak.filter(x=>x!==r.dataset.i);save();review();rail()};const dd=r.querySelector(".d");dd.onclick=()=>dd.classList.remove("hide")});
+  $("#hide").onclick=()=>{blurOn=!blurOn;review()};
+  $("#again").onclick=()=>{d.draft="";d.marks={};secs=0;save();step=1;render()};
+}
+render();
+</script>
+
+</body></html>
